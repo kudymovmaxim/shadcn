@@ -1,0 +1,4 @@
+.DS_Store
+/.next/cache
+/node_modules
+/.next
