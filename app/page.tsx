@@ -25,6 +25,7 @@ import { Label } from "@/components/ui/label"
 import { AppSidebar } from "@/components/app-sidebar"
 import { SelectDemo } from "@/components/select-demo"
 import { NavActions } from "@/components/nav-actions"
+import { ModeToggle } from "@/components/mode-toggle"
 
 
 export default function Page() {
@@ -53,6 +54,9 @@ export default function Page() {
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
+            <div className="ml-auto px-3">
+              <ModeToggle />
+            </div>
           </header>
           <div className="flex flex-1 flex-col gap-4 p-4">
             <div className="grid auto-rows-min gap-4 md:grid-cols-3">
