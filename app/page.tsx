@@ -70,7 +70,11 @@ export default function Page() {
                 </header>
               </div>
             </div>
-            <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
+            <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" >
+              <div className="bg-popover border border-border p-4 rounded-md">
+                Тест фона popover
+              </div>
+            </div>
           </div>
         </SidebarInset>
       </SidebarProvider>
