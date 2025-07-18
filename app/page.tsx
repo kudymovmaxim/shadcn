@@ -1,147 +1,80 @@
 import { Button } from "@/components/ui/button"
 import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
   SidebarProvider,
+  SidebarInset,
+  SidebarTrigger,
 } from '@/components/ui/sidebar'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
 
 import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb'
 
-import { User2, ChevronUp} from 'lucide-react'
+import { Separator } from "@/components/ui/separator"
+
+
+import { LoginForm } from "@/components/login-form"
 
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
+import { AppSidebar } from "@/components/app-sidebar"
+import { SelectDemo } from "@/components/select-demo"
+import { NavActions } from "@/components/nav-actions"
+
+
 export default function Page() {
   return (
-    // <Select>
-    //   <SelectTrigger className="w-[180px]">
-    //     <SelectValue placeholder="Select a fruit" />
-    //   </SelectTrigger>
-    //   <SelectContent>
-    //     <SelectGroup>
-    //       <SelectLabel>Fruits</SelectLabel>
-    //       <SelectItem value="apple">Apple</SelectItem>
-    //       <SelectItem value="banana">Banana</SelectItem>
-    //       <SelectItem value="blueberry">Blueberry</SelectItem>
-    //       <SelectItem value="grapes">Grapes</SelectItem>
-    //       <SelectItem value="pineapple">Pineapple</SelectItem>
-    //     </SelectGroup>
-    //   </SelectContent>
-    // </Select>
+    <div className="flex h-screen">
 
-    <SidebarProvider>
-      <Sidebar>
-        <SidebarHeader />
-        <SidebarContent />
-        <SidebarFooter>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <SidebarMenuButton>
-                    <User2 /> Username
-                    <ChevronUp className="ml-auto" />
-                  </SidebarMenuButton>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  side="top"
-                  className="w-[--radix-popper-anchor-width]"
-                >
-                  <DropdownMenuItem>
-                    <span>Account</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <span>Billing</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <span>Sign out</span>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarFooter>
-      </Sidebar>
-    </SidebarProvider>
+      <SidebarProvider>
+        <AppSidebar />
+        <SidebarInset>
+          <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+            <SidebarTrigger className="-ml-1" />
+            <Separator
+              orientation="vertical"
+              className="mr-2 data-[orientation=vertical]:h-4"
+            />
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem className="hidden md:block">
+                  <BreadcrumbLink href="#">
+                    Building Your Application
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="hidden md:block" />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </header>
+          <div className="flex flex-1 flex-col gap-4 p-4">
+            <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+              <div className="bg-muted/50 aspect-video rounded-xl" >
+                <LoginForm />
+              </div>
+              <div className="bg-muted/50 aspect-video rounded-xl flex items-center justify-center" >
+                 <SelectDemo />
+               </div>
+              <div className="bg-muted/50 aspect-video rounded-xl" >
+                <header className="flex h-14 shrink-0 items-center gap-2">
+                  <div className="ml-auto px-3">
+                    <NavActions />
+                  </div>
+                </header>
+              </div>
+            </div>
+            <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
+          </div>
+        </SidebarInset>
+      </SidebarProvider>
 
-
-    // <div className="min-h-screen flex items-center justify-center p-4">
-    //   <Card className="w-full max-w-sm">
-    //     <CardHeader>
-    //       <CardTitle>Login to your account</CardTitle>
-    //       <CardDescription>
-    //         Enter your email below to login to your account
-    //       </CardDescription>
-    //       <CardAction>
-    //         <Button variant="link">Sign Up</Button>
-    //       </CardAction>
-    //     </CardHeader>
-    //     <CardContent>
-    //       <form>
-    //         <div className="flex flex-col gap-6">
-    //           <div className="grid gap-2">
-    //             <Label htmlFor="email">Email</Label>
-    //             <Input
-    //               id="email"
-    //               type="email"
-    //               placeholder="m@example.com"
-    //               required
-    //             />
-    //           </div>
-    //           <div className="grid gap-2">
-    //             <div className="flex items-center">
-    //               <Label htmlFor="password">Password</Label>
-    //               <a
-    //                 href="#"
-    //                 className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-    //               >
-    //                 Forgot your password?
-    //               </a>
-    //             </div>
-    //             <Input id="password" type="password" required />
-    //           </div>
-    //         </div>
-    //       </form>
-    //     </CardContent>
-    //     <CardFooter className="flex-col gap-2">
-    //       <Button type="submit" className="w-full">
-    //         Login
-    //       </Button>
-    //       <Button variant="outline" className="w-full">
-    //         Login with Google
-    //       </Button>
-    //     </CardFooter>
-    //   </Card>
-    // </div>
+    </div>
   )
 }
